@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+        
+    <style>
+        *{
+        padding: 0;
+        margin: 0;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    body{
+        color: white;
+    }
+
+    .container{
+        background-color: #D0D3D4;
+        display:flex; 
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw; 
+    }
+
+    .formNome{
+        box-sizing: border-box;
+        background-color: #1F2A44;
+        width: 100%; 
+        height: auto;
+        max-width: 600px;
+        border-radius: 3vh;
+        border: 2px solid #63B1BC;
+        padding: auto;
+        display:flex; 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .formApontamento{
+        box-sizing: border-box;
+        background-color: #1F2A44;
+        width: 100%; 
+        height: auto;
+        max-width: 50vw;
+        border-radius: 3vh;
+        border: 2px solid #63B1BC;
+        padding: auto;
+        display:flex; 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nomeTitulo{
+        text-align: center;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .select{
+        padding:10px; 
+        margin-bottom: 15px; 
+        border: 1px solid #DDD; 
+        border-top-left-radius: 1vh; 
+        border-top-right-radius: 1vh; 
+        font-size: 16px;
+        outline: none;
+    } 
+
+    option{
+        border-radius: 10vh;
+    }
+
+    .divDados{
+        box-sizing: border-box;
+        background-color: #1F2A44;
+        border: 2px solid #63B1BC;
+        border-left: none;
+        border-right: none;
+        border-radius: 3vh;
+        width: 100%;
+        display:flex; 
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;    
+    }
+
+    textarea{
+        width: 80%;
+        margin-bottom: 16px;
+        padding:10px; 
+        border: 1px solid #DDD; 
+        border-top-left-radius: 1vh; 
+        border-top-right-radius: 1vh; 
+        font-size: 16px;
+        outline: none;
+    }
+
+    textarea ::placeholder{
+        text-align: right;
+    }
+
+    .divSelects{
+        display: flex;
+        flex-direction: row;
+    }
+
+    label{
+        margin-bottom:8px;
+        margin-top:8px;
+    }
+
+    span{
+        margin: 16px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    textarea{
+        height: 150px
+    }
+
+    .divButtons{
+        padding-bottom: 32px;
+    }
+
+    button{
+        color: white;
+        background-color: #ED145B;
+        padding:10px; 
+        border: 1px solid #DDD; 
+        border-radius: 1vh; 
+        font-size: 16px; 
+        outline: none;
+        cursor: pointer;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 83%;
+    }
+
+    @media (max-width: 1110px){
+    .divSelects{
+        display: block;
+        width: 100%;
+    }
+    .select{
+        width: 100%;
+    }    
+    textarea{
+        width: 80%;
+    }
+    .container{
+        padding-top: 40px;
+        padding-bottom: 40px;
+        min-height: 100vh;
+        height: 100% !important;
+        width: 100% !important; 
+    }
+    .formApontamento{
+        max-width: 75vw;
+    }
+}
+    
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 telas - Apontamento de Horas</title>
+    <base href="/">
+    <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+</head>
+<body>
+    <section class="container">
+        <div id="divNome" class="formNome">
+            <div class="containerNome">
+                <span>
+                    <label class="lblNome" for="selectNome">Nome</label>
+                    <select class="select" name="selectNome" id="selectNome">
+                        <option value="-1">SELECIONE O SEU NOME</option>
+                        <option value="0">BRAIAN HUDSON BRAGA</option>
+                        <option value="1">FRANCISCO CIDADE HOMEM JÚNIOR</option>
+                        <option value="2">JOÃO PEDRO DE PAULA</option>
+                        <option value="3">JOÃO PEDRO SOARES</option>
+                        <option value="4">MARCELO AUGUSTO DOS SANTOS</option>
+                        <option value="6">MATHEUS CUSTODIO BARBOSA DA SILVA</option>
+                        <option value="5">MATHEUS HUK MORESCHI</option>
+                        <option value="7">PAULO TADEU MUNIZ SOUZA</option>
+                        <option value="8">RAFAEL BARROS REIS</option>
+                        <option value="9">RAPHAEL AUGUSTO BACHEGA MESSIAS</option>
+                    </select>
+                    <div style="width: 100%;" class="divButtons">
+                        <button class="btnProximo" style=" width: 100%" onclick="nextP()">Seguir</button>
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div id="divApontamento" style="display: none" class="formApontamento">  
+            <div class="nomeTitulo" id="nomeTitulo">
+                nome
+            </div>
+            <div class="divSelects">
+                <span>
+                    <label for="cbAtividade">Tipo de Atividade</label>
+                    <select class="select" name="cbAtividade" id="selectAtividade">
+                        <option value="BUG">BUG</option>       
+                        <option value="BOOTCAMP">BOOTCAMP</option>       
+                        <option value="ESTUDO">ESTUDO</option>       
+                        <option value="MELHORIA">MELHORIA</option>       
+                        <option value="PAUSA*">PAUSA*</option>       
+                        <option value="PROJETO">PROJETO</option>       
+                        <option value="REUNIÃO">REUNIÃO</option>       
+                    </select>
+                </span>
+
+                <span>
+                    <label for="cbProjeto">Projeto</label>
+                    <select class="select" name="cbProjeto" id="selectProjeto">   
+                        <option value="CONTROLE DE ENERGIA">CONTROLE DE ENERGIA</option>                
+                        <option value="CRAWLER O.N.S.">CRAWLER O.N.S.</option>                
+                        <option value="DATA COLECTOR">DATA COLECTOR</option>                
+                        <option value="IM">IM</option>                
+                        <option value="MOODLE">MOODLE</option>                
+                        <option value="PULPITO DIGITAL">PULPITO DIGITAL</option>                
+                        <option value="SITE T4K">SITE T4K</option>                
+                        <option value="STORM VISTA">STORM VISTA</option>                
+                        <option value="SYSDRINK">SYSDRINK</option>                
+                    </select>
+                </span>
+                <span>
+                    <label for="cbCliente">Cliente</label>
+                    <select class="select" name="cbCliente" id="selectCliente">                   
+                        <option value="BANDTEC">BANDTEC</option>
+                        <option value="MATRIX">MATRIX</option>
+                        <option value="LATAM">LATAM</option>
+                        <option value="BEHAVIOR">BEHAVIOR</option>
+                        <option value="TECH4KIDS">TECH4KIDS</option>
+                    </select>
+                </span>
+            </div>
+            <div class="divDados">
+                <label for="descricao">Descrição da Atividade:</label>
+                <textarea name="descricao" id="txtDescricao" cols="70" rows="10" placeholder="Digite uma breve descrição sobre a atividade realizada"></textarea>
+            </div>
+            <div style="margin-top: 30px; width: 100%; text-align: center;" class="divButtons">
+                <button class="btnGravar" onclick="submit()">Gravar</button>
+                <button class="btnVoltar" style="margin-top: 8px" onclick="previousP()">Voltar</button>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>
+
+<script>
+
+    function nextP(){
+        var select = Number(document.getElementById("selectNome").value);
+        var titulo = document.getElementById("nomeTitulo");
+
+        switch(select){
+            case 0: titulo.innerHTML = "BRAIAN HUDSON BRAGA";
+                break;
+            case 1: titulo.innerHTML = "FRANCISCO CIDADE HOMEM JUNIOR";
+                break;
+            case 2: titulo.innerHTML = "JOÃO PEDRO DE PAULA";
+                break;
+            case 3: titulo.innerHTML = "JOÃO PEDRO SOARES";
+                break;
+            case 4: titulo.innerHTML = "MARCELO AUGUSTO DOS SANTOS";
+                break;
+            case 5: titulo.innerHTML = "MATHEUS CUSTÓDIO DOS SANTOS BARBOSA";
+                break;
+            case 6: titulo.innerHTML = "MATHEUS HUK MORESCHI";
+                break;
+            case 7: titulo.innerHTML = "PAULO TADEU MUNIZ DE SOUZA";
+                break;
+            case 8: titulo.innerHTML = "RAFAEL BARROS REIS";
+                break;
+            case 9: titulo.innerHTML = "RAPHAEL AUGUSTO BACHEGA MESSIAS";
+                break;
+            case -1: alert("Selecione um nome para poder continuar");
+                return;
+        }
+
+        divNome.style.display = "none";
+        divApontamento.style.display = "flex";
+
+        console.log("Usuário selecionado: "+titulo.innerHTML);
+
+    }
+
+    function previousP(){
+        divNome.style.display = "flex";
+        divApontamento.style.display = "none";
+    }
+
+    async function submit(){
+        const nomeT = document.getElementById("nomeTitulo");
+        const atividade = document.getElementById("selectAtividade");
+        const projeto = document.getElementById("selectProjeto");
+        const cli = document.getElementById("selectCliente");
+        const desc = document.getElementById("txtDescricao");
+
+        console.log(
+            "Nome: " + nomeT.innerHTML +
+            "\nAtividade: " + atividade.value +
+            "\nProjeto: " + projeto.value +
+            "\nCliente: " + cli.value +
+            "\nDescricao: " + desc.value 
+        );
+
+        const variavelResposta = await fetch('/send_message', {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({               
+                nome: nomeT.innerHTML,
+                tipoAtividade: atividade.value,
+                nomeProjeto: projeto.value,
+                cliente: cli.value,
+                descricao: desc.value,
+            })
+        });
+
+    }
+
+</script>
